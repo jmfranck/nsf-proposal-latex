@@ -15,18 +15,40 @@
 % http://www.wtfpl.net for more details.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{longtable}
-\usepackage[latin1]{inputenc}
-\usepackage[amssymb]{SIunits}
+\usepackage{ifxetex}
+\ifxetex
+    \usepackage{mathspec} %loads fontspec as well
+    %\setmainfont[Mapping=tex-text]{Times New Roman}
+    \setmainfont{Times New Roman}
+    %\setmainfont[Mapping=tex-text, Ligatures={Common, Rare}]{Times New Roman}
+    %\setmainfont[Mapping=rijke,Scale=1.05,Ligatures={Common, Rare}]{Times New Roman}
+    \setmathrm{Times New Roman}
+    %\setmathfont(Digits,Latin){Times New Roman}
+    %\setmathfont(Greek){Times New Roman}
+    \setsansfont{Arial}
+    %\show\varTheta
+    \usepackage[amssymb]{SIunits}
+    \usepackage{amsmath, amsthm, amssymb}
+\else
+    \usepackage[latin1]{inputenc}
+    \usepackage[amssymb]{SIunits}
+    \usepackage{amsmath, amsthm, amssymb}
+\fi
 \usepackage{latexsym}
 \usepackage{multirow}
 \usepackage{wrapfig}
-\usepackage{amsmath, amsthm, amssymb}
+%\show\varTheta
 \usepackage{amsfonts}
 \usepackage[format=plain,indention=0cm, font=small, labelfont=bf]{caption}
+\ifxetex
+    \newfontfamily\captionfont{Arial}
+    \DeclareCaptionFormat{sansfont}{\captionfont\footnotesize#1#2#3}
+    \captionsetup{format=sansfont,labelfont=bf,justification=justified,singlelinecheck=off,skip=2pt}
+    \captionsetup[wrapfigure]{margin=2pt}%for some reason, it's ncessary to explicitly say that the margin is for the wrapfigure, or it doesn't work!
+\fi
 \usepackage{fancyhdr}
-\usepackage[pdftex]{graphicx}
-\usepackage[pdftex,
-	    colorlinks, 	
+\usepackage{graphicx}
+\usepackage[colorlinks, 	
 	    pdfstartview=FitH,
 	    linkcolor=black,
 	    citecolor=black,
