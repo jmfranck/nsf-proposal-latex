@@ -26,20 +26,18 @@
 \begin{document}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% SINGLE PAGE DOCUMENTS
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% Generate COA page using COA template
-
-%\include{collab_person1}
-%\include{collab_person2}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % A - COVER SHEET
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Section produced by fastlane.
 % Enter information there.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\ifIncludePAPPG
+    \setcounter{page}{1}
+    \renewcommand{\thepage} {A--\arabic{page}}
+    \include{a-coverpage}
+    \newpage
+\fi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % B - PROJECT SUMMARY
@@ -48,6 +46,26 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setcounter{page}{1}
 \renewcommand{\thepage} {B--\arabic{page}}
+\begin{pappg}
+    Each proposal must contain a summary of the proposed project not more than one page in length. The
+    Project Summary consists of an overview, a statement on the intellectual merit of the proposed activity, and
+    a statement on the broader impacts of the proposed activity.
+
+    The overview includes a description of the activity that would result if the proposal were funded and a
+    statement of objectives and methods to be employed. The statement on intellectual merit should describe
+    the potential of the proposed activity to advance knowledge. The statement on broader impacts should
+    describe the potential of the proposed activity to benefit society and contribute to the achievement of
+    specific, desired societal outcomes.
+
+    The Project Summary should be informative to other persons working in the same or related fields, and,
+    insofar as possible, understandable to a broad audience within the scientific domain. It should not be an
+    abstract of the proposal.
+
+    The Project Summary may ONLY be uploaded as a Supplementary Document if use of special characters
+    is necessary. Such Project Summaries must be formatted with separate headings for Overview, Intellectual
+    Merit and Broader Impacts. Failure to include these headings will result in the proposal being returned
+    without review.
+\end{pappg}
 \newpage
 \include{b-summary}
 
@@ -84,7 +102,7 @@
 \include{f-bio_person2}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% G - BUDGET JUSTIFICATION
+% G - BUDGET AND BUDGET JUSTIFICATION
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Limited to 3 pages
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -103,7 +121,8 @@
 \include{h-support_person2}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% I - FACILITIES & RESOURCES
+% I - FACILITIES, EQUIPMENT & other
+%     RESOURCES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
 \pagenumbering{arabic}
@@ -111,12 +130,17 @@
 \include{i-facilities}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% J - DATA MANAGEMENT PLAN
+% J - SPECIAL INFORMATION and
+%     SUPPLEMENTARY DOCUMENTATION:
+%     - DATA MANAGEMENT PLAN
+%     - POSTDOCTORAL MENTORING PLAN
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
 \pagenumbering{arabic}
 \renewcommand{\thepage} {J--\arabic{page}}
 \include{j-data}
+\newpage
+\textbf{Postdoctoral Mentoring Plan} % if applicable
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % J - POSTDOC MENTORING PLAN
@@ -125,5 +149,28 @@
 %\pagenumbering{arabic}
 %\renewcommand{\thepage} {J--\arabic{page}}
 %\noindent{\Large \bf POSTDOCTORAL MENTORING PLAN}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% K - SINGLE COPY DOCUMENTS
+%     - collaborators and other
+%       affiliations
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newpage
+\pagenumbering{arabic}
+\renewcommand{\thepage} {K--\arabic{page}}
+\begin{pappg}
+    Generate COA page using COA template
+\end{pappg}
+\newpage
+\begin{pappg}
+    List of suggested reviewers
+\end{pappg}
+
+
+%\include{collab_person1}
+%\include{collab_person2}
+
 
 \end{document}

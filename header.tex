@@ -15,6 +15,7 @@
 % http://www.wtfpl.net for more details.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{longtable}
+\usepackage{environ}
 \usepackage{ifxetex}
 \ifxetex
     \usepackage{mathspec} %loads fontspec as well
@@ -80,3 +81,28 @@
 \medskip\hbox{\vbox{\parindent=2em\hsize=6.12in
 \hangindent=4em\hangafter=1#1}}}
 \def\baselinestretch{1}
+
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{calc}
+\usetikzlibrary{arrows,shapes}
+\tikzstyle{every picture}+=[remember picture]
+
+\newif\ifIncludePAPPG
+\IncludePAPPGtrue
+\NewEnviron{pappg}{\ifIncludePAPPG%
+
+    \noindent\begin{tikzpicture}
+        \tikzstyle{mybox} = [draw=blue!50!black,
+            fill=blue!5!white, very thick, rectangle, rounded
+            corners, inner sep=10pt, inner ysep=5pt]
+        \node [mybox] (box){%
+            \noindent\begin{minipage}{\linewidth-20pt}% 20pt based off the 10pt above
+                \noindent\footnotesize
+                \BODY
+            \end{minipage}
+        };
+    \end{tikzpicture}
+\fi%
+}
+
